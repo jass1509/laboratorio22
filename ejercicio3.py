@@ -1,14 +1,8 @@
 import requests
 
-url = "https://httpbin.org/get"
-response = requests.get(url)
+r = requests.get("https://httpbin.org/get")
 
-data = response.json()
-
-print("IP:", data["origin"])
-print("\nHeaders:")
-for key, value in data["headers"].items():
-    print(f"{key}: {value}")
-
-print("\nArgs:")
-print(data["args"])
+print("Status:", r.status_code)
+print("IP:", r.json().get("origin"))
+print("Headers:", r.json().get("headers"))
+print("Args:", r.json().get("args"))
